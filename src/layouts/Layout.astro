@@ -1,0 +1,53 @@
+---
+const { pageTitle = "Personal Website" } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+        color: #111;
+        background: #fcfcfc;
+      }
+      nav a {
+        margin-right: 1.5rem;
+        color: #333;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      nav a:hover { text-decoration: underline; }
+      footer {
+        margin-top: 4rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+        font-size: 0.9rem;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/portfolio">Portfolio</a>
+      </nav>
+    </header>
+
+    <main style="margin-top: 2rem;">
+      <slot /> <!-- Page content renders here -->
+    </main>
+
+    <footer>
+      <p>© {new Date().getFullYear()} • Anthony Heang</p>
+
+      
+    </footer>
+  </body>
+</html>

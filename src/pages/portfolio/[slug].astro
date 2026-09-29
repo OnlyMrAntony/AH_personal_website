@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/Layout.astro';
+import Carousel from '../../components/Carousel.jsx';
+
+// Tell Astro which static routes to pre-render at build time
+export async function getStaticPaths() {
+  const projects = await getCollection('portfolio');
+  return projects.map((project) => ({
+    params: { slug: project.id }, // Matches the dynamic [slug] in the filename
+    props: { project },
+  }));
+}
+
+// 2. Extract the project prop for the current route
+const { project } = Astro.props;
+
+// 3. Render the Markdown content to HTML
+const { Content } = await render(project);
+---
+
+<BaseLayout pageTitle={project.data.title}>
+  <article>
+    <a href="/portfolio" style="color: #718096; text-decoration: none;">&larr; Back to Portfolio</a>
+    
+    <h1 style="margin-top: 1rem; margin-bottom: 0.5rem;">{project.data.title}</h1>
+    
+    <p style="color: #718096; font-size: 0.9rem;">
+      Published: {project.data.pubDate?.toISOString().split('T')[0] ?? 'Unknown'}
+    </p>
+
+    <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0;" />
+    
+    
+    {/* Renders the full Markdown body content */}
+    <div class="prose">
+      <Content />
+      
+    </div>
+    {/* 2. Renders the interactive carousel after all content */}
+    {project.data.images && project.data.images.length > 0 && (
+      <Carousel images={project.data.images as any} client:visible />
+    )}
+  </article>
+</BaseLayout>

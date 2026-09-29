@@ -1,0 +1,38 @@
+---
+// src/pages/index.astro
+import BaseLayout from '../layouts/Layout.astro';
+---
+
+<BaseLayout pageTitle="Home">
+  <section>
+    <img src="src\assets\Full-Stack Engineer & Developer.png" style="max-width: 100%; height: auto;" />
+  </section>
+  <section>
+    <h1>Anthony Heang</h1>
+    <p>
+      Hello, I am a 2nd year Computer Engineering student at University of California, Irvine, focused on embedded systems, hardware prototyping, 
+      and full-stack development.
+    </p>
+  </section>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #eee;" />
+
+  <section>
+    <h2>Core Skills & Interests</h2>
+    <ul>
+      <li><strong>Embedded Systems & Hardware:</strong> C/C++, PCB Design, ESP32, Microcontrollers</li>
+      <li><strong>Software Development:</strong> Web Development, Python</li>
+      <li><strong>Design Tools:</strong> Altium, Wokwi Simulator, Git/GitHub, VSCode, Vivado</li>
+    </ul>
+  </section>
+
+  <section style="margin-top: 2rem;">
+    <h2>Featured Experience</h2>
+    <p>
+      Explore my full list of project walkthroughs and technical write-ups.
+    </p>
+    <a href="/portfolio" style="display: inline-block; padding: 0.5rem 1rem; background: #000; color: #fff; text-decoration: none; border-radius: 6px;">
+      View Portfolio &rarr;
+    </a>
+  </section>
+</BaseLayout>
